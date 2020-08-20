@@ -1,11 +1,11 @@
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, render_template
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def home():
-    return "Hello from Homepage"
+    return render_template("index.html", content=["elfi", "julia"])
 
 
 @app.route("/<name>")
@@ -15,7 +15,7 @@ def user(name):
 
 @app.route("/admin/")
 def admin():
-  # redirect to user and pass in name arg as Admin!
+    # redirect to user and pass in name arg as Admin!
     return redirect(url_for("user", name="Admin!"))
 
 
